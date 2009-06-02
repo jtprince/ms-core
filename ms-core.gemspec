@@ -19,14 +19,14 @@ Gem::Specification.new do |s|
   s.add_development_dependency("minitest", ">= 1.3.0")
   
   s.extra_rdoc_files = %W{
-    README
+    README.rdoc
     MIT-LICENSE
     History
   }
   
   s.files = %W{
     LICENSE
-    README
+    README.rdoc
     History
     lib/ms.rb
     lib/ms/calc.rb
