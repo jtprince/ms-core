@@ -1,5 +1,6 @@
 require 'ms/data/interleaved'
 require 'ms/data/transposed'
+require 'ms/data/lazy_string'
 
 module Ms
   
