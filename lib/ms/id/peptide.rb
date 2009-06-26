@@ -28,7 +28,7 @@ module Ms::Id::Peptide
       when 1  ## this must be a parse error!
         pieces[0] ## which is the peptide itself  
       else
-        abort "bad peptide sequence: #{sequence}"
+        abort "bad peptide sequence: #{sequence.inspect}"
       end
     end
 
