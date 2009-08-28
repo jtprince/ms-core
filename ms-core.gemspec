@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   }
   
   s.files = %W{
-    LICENSE
+    MIT-LICENSE
     README.rdoc
     History
     lib/ms.rb
