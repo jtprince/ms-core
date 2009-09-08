@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = "ms-core"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.summary = "basic, shared functionality for mspire libraries"
   s.date = Time.now.strftime("%Y-%m-%d")
   s.authors = ["Simon Chiang", "John Prince"]
-  s.email = ["simon.a.chiang@gmail.com", "jtprince@gmail.com"]
+  s.email = ["jtprince@gmail.com"]
   s.homepage = "http://mspire.rubyforge.org/ms-core/"
   s.require_path = "lib"
   #s.test_file = "spec/tap_spec_suite.rb"

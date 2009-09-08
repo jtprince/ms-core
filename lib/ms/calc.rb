@@ -20,13 +20,11 @@ module Ms
         tol = ppm_tol_at(mz, ppm)
         mz-tol...mz+tol
       end
-      
 
       # Rounds n to the specified precision (ie number of decimal places)
-      # def round(n, precision)
-      #   factor = 10**precision.to_i
-      #   (n * factor).round.to_f / factor
-      # end
-      
+      def round(n, precision)
+        factor = 10**precision.to_i
+        (n * factor).round.to_f / factor
+      end
   end
 end
