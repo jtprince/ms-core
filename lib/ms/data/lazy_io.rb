@@ -1,3 +1,5 @@
+require 'zlib'
+
 module Ms
   module Data
     
@@ -40,12 +42,16 @@ module Ms
       # Indicates a decoding format, may be false to unpack string
       # without decoding.
       attr_reader :decode_format
+
+      # boolean: whether the peaks string is zlib compressed
+      attr_reader :compressed
       
-      def initialize(io, start_index=io.pos, num_bytes=nil, unpack_format=NETWORK_FLOAT, decode_format=BASE_64)
+      def initialize(io, start_index=io.pos, num_bytes=nil, unpack_format=NETWORK_FLOAT, compressed=false, decode_format=BASE_64)
         @io = io
         @start_index = start_index
         @num_bytes = num_bytes
         @unpack_format = unpack_format
+        @compressed = compressed
         @decode_format = decode_format
       end
       
@@ -61,13 +67,15 @@ module Ms
       def reset
         @array = nil
       end
-      
+
       # Reads string and unpacks using decode_format and unpack_code.  The
       # array is cached internally; to re-read the array, use reset.
       def to_a
-        @array ||= (decode_format ? string.unpack(decode_format)[0] : string).unpack(unpack_format)
+        return @array if @array
+        decoded = decode_format ?  string.unpack(decode_format)[0] : string
+        uncompressed = @compressed ? Zlib::Inflate.inflate(decoded) : decoded
+        uncompressed.unpack(unpack_format)
       end
-
     end
   end
 end
