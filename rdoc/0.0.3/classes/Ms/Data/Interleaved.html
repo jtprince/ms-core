@@ -53,13 +53,13 @@
             <h2>Methods</h2>
             <h3>public class</h3>
             <ol>
-              <li><a href="#M000019">new</a></li>
+              <li><a href="#M000016">new</a></li>
             </ol>
             <h3>public instance</h3>
             <ol>
-              <li><a href="#M000020">[]</a></li>
-              <li><a href="#M000022">resolve</a></li>
-              <li><a href="#M000021">resolved?</a></li>
+              <li><a href="#M000017">[]</a></li>
+              <li><a href="#M000019">resolve</a></li>
+              <li><a href="#M000018">resolved?</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -77,57 +77,57 @@
             </div>
             <div id='methods'>
               <h2>Public class methods</h2>
-              <div class='method public-class' id='method-M000019'>
-                <a name='M000019'></a>
+              <div class='method public-class' id='method-M000016'>
+                <a name='M000016'></a>
                 <div class='synopsis'>
                   <span class='name'>new</span>
                   <span class='arguments'>(unresolved_data, n=2)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000019-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000016-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000019-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 26</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unresolved_data</span>, <span class="ruby-identifier">n</span>=<span class="ruby-value">2</span>)&#x000A;        <span class="ruby-ivar">@n</span> = <span class="ruby-value">2</span>&#x000A;        <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">unresolved_data</span>)&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000016-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 26</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unresolved_data</span>, <span class="ruby-identifier">n</span>=<span class="ruby-value">2</span>)&#x000A;        <span class="ruby-ivar">@n</span> = <span class="ruby-value">2</span>&#x000A;        <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">unresolved_data</span>)&#x000A;      <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <h2>Public instance methods</h2>
-              <div class='method public-instance' id='method-M000020'>
-                <a name='M000020'></a>
+              <div class='method public-instance' id='method-M000017'>
+                <a name='M000017'></a>
                 <div class='synopsis'>
                   <span class='name'>[]</span>
                   <span class='arguments'>(index)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000020-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000017-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000020-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 31</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">index</span>)&#x000A;        <span class="ruby-identifier">resolve</span>.<span class="ruby-identifier">data</span>[<span class="ruby-identifier">index</span>]&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000017-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 31</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">index</span>)&#x000A;        <span class="ruby-identifier">resolve</span>.<span class="ruby-identifier">data</span>[<span class="ruby-identifier">index</span>]&#x000A;      <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000022'>
-                <a name='M000022'></a>
+              <div class='method public-instance' id='method-M000019'>
+                <a name='M000019'></a>
                 <div class='synopsis'>
                   <span class='name'>resolve</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000022-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000019-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000022-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 39</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve</span>&#x000A;        <span class="ruby-keyword kw">return</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resolved?</span>&#x000A;        &#x000A;        <span class="ruby-identifier">unresolved_data</span> = <span class="ruby-ivar">@unresolved_data</span>.<span class="ruby-identifier">to_a</span>&#x000A;        &#x000A;        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">unresolved_data</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>&#x000A;          <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;interleaved data must have a number of elements evenly divisible by n (#{n})&quot;</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;        &#x000A;        <span class="ruby-identifier">n</span>.<span class="ruby-identifier">times</span> { <span class="ruby-ivar">@data</span> <span class="ruby-operator">&lt;&lt;</span> [] }&#x000A;        <span class="ruby-identifier">map</span> = <span class="ruby-ivar">@data</span> <span class="ruby-operator">*</span> (<span class="ruby-identifier">unresolved_data</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">/</span><span class="ruby-identifier">n</span>)&#x000A;        &#x000A;        <span class="ruby-identifier">unresolved_data</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>&#x000A;          <span class="ruby-identifier">map</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;&#x000A;        <span class="ruby-keyword kw">self</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000019-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 39</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve</span>&#x000A;        <span class="ruby-keyword kw">return</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resolved?</span>&#x000A;        &#x000A;        <span class="ruby-identifier">unresolved_data</span> = <span class="ruby-ivar">@unresolved_data</span>.<span class="ruby-identifier">to_a</span>&#x000A;        &#x000A;        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">unresolved_data</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>&#x000A;          <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;interleaved data must have a number of elements evenly divisible by n (#{n})&quot;</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;        &#x000A;        <span class="ruby-identifier">n</span>.<span class="ruby-identifier">times</span> { <span class="ruby-ivar">@data</span> <span class="ruby-operator">&lt;&lt;</span> [] }&#x000A;        <span class="ruby-identifier">map</span> = <span class="ruby-ivar">@data</span> <span class="ruby-operator">*</span> (<span class="ruby-identifier">unresolved_data</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">/</span><span class="ruby-identifier">n</span>)&#x000A;        &#x000A;        <span class="ruby-identifier">unresolved_data</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>&#x000A;          <span class="ruby-identifier">map</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;&#x000A;        <span class="ruby-keyword kw">self</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000021'>
-                <a name='M000021'></a>
+              <div class='method public-instance' id='method-M000018'>
+                <a name='M000018'></a>
                 <div class='synopsis'>
                   <span class='name'>resolved?</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000021-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000018-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000021-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 35</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolved?</span>&#x000A;        <span class="ruby-operator">!</span><span class="ruby-ivar">@data</span>.<span class="ruby-identifier">empty?</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000018-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 35</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolved?</span>&#x000A;        <span class="ruby-operator">!</span><span class="ruby-ivar">@data</span>.<span class="ruby-identifier">empty?</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>

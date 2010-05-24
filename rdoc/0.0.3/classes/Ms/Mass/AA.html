@@ -52,7 +52,7 @@
             <h2>Methods</h2>
             <h3>public class</h3>
             <ol>
-              <li><a href="#M000005">mass_index</a></li>
+              <li><a href="#M000001">mass_index</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -90,8 +90,8 @@
             </div>
             <div id='methods'>
               <h2>Public class methods</h2>
-              <div class='method public-class' id='method-M000005'>
-                <a name='M000005'></a>
+              <div class='method public-class' id='method-M000001'>
+                <a name='M000001'></a>
                 <div class='synopsis'>
                   <span class='name'>mass_index</span>
                   <span class='arguments'>(type=:mono)</span>
@@ -103,10 +103,10 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000005-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000005-source'><span class="ruby-comment cmt"># File lib/ms/mass/aa.rb, line 41</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">mass_index</span>(<span class="ruby-identifier">type</span>=<span class="ruby-identifier">:mono</span>)&#x000A;        <span class="ruby-identifier">hash</span> = {}&#x000A;        (<span class="ruby-value str">'A'</span><span class="ruby-operator">..</span><span class="ruby-value str">'Z'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">letter</span><span class="ruby-operator">|</span>&#x000A;          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">res</span> = <span class="ruby-constant">Molecules</span><span class="ruby-operator">::</span><span class="ruby-constant">Libraries</span><span class="ruby-operator">::</span><span class="ruby-constant">Residue</span>[<span class="ruby-identifier">letter</span>]&#x000A;            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">letter</span>] =&#x000A;              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:mono</span>&#x000A;                <span class="ruby-identifier">res</span>.<span class="ruby-identifier">mass</span>&#x000A;              <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:avg</span>&#x000A;                <span class="ruby-identifier">res</span>.<span class="ruby-identifier">mass</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">std_atomic_weight</span>.<span class="ruby-identifier">value</span> }&#x000A;              <span class="ruby-keyword kw">else</span>&#x000A;                <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;type must be :mono or :avg&quot;</span>&#x000A;              <span class="ruby-keyword kw">end</span>&#x000A;          <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-identifier">hash</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000001-source'><span class="ruby-comment cmt"># File lib/ms/mass/aa.rb, line 41</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">mass_index</span>(<span class="ruby-identifier">type</span>=<span class="ruby-identifier">:mono</span>)&#x000A;        <span class="ruby-identifier">hash</span> = {}&#x000A;        (<span class="ruby-value str">'A'</span><span class="ruby-operator">..</span><span class="ruby-value str">'Z'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">letter</span><span class="ruby-operator">|</span>&#x000A;          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">res</span> = <span class="ruby-constant">Molecules</span><span class="ruby-operator">::</span><span class="ruby-constant">Libraries</span><span class="ruby-operator">::</span><span class="ruby-constant">Residue</span>[<span class="ruby-identifier">letter</span>]&#x000A;            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">letter</span>] =&#x000A;              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:mono</span>&#x000A;                <span class="ruby-identifier">res</span>.<span class="ruby-identifier">mass</span>&#x000A;              <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:avg</span>&#x000A;                <span class="ruby-identifier">res</span>.<span class="ruby-identifier">mass</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">std_atomic_weight</span>.<span class="ruby-identifier">value</span> }&#x000A;              <span class="ruby-keyword kw">else</span>&#x000A;                <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;type must be :mono or :avg&quot;</span>&#x000A;              <span class="ruby-keyword kw">end</span>&#x000A;          <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-identifier">hash</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>
