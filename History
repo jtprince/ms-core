@@ -1,3 +1,8 @@
+== version 0.0.3
+
+* switched specs to spec/more
+* added ability to decompress mzxml data
+
 == version 0.0.2
 
 * round function in Ms::Calc
