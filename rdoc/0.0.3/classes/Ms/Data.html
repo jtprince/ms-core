@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: Ms::Data [RDoc Documentation]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Module</span>
+          Ms::Data
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../../files/lib/ms/data/lazy_io_rb.html">lib/ms/data/lazy_io.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../../files/lib/ms/data/transposed_rb.html">lib/ms/data/transposed.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../../files/lib/ms/data/interleaved_rb.html">lib/ms/data/interleaved.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../../files/lib/ms/data/lazy_string_rb.html">lib/ms/data/lazy_string.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../../files/lib/ms/data/simple_rb.html">lib/ms/data/simple.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../../files/lib/ms/data_rb.html">lib/ms/data.rb</a>
+          </li>
+          <li>
+            <a class='show' href='#' onclick='this.parentNode.parentNode.className += " expanded"; this.parentNode.removeChild(this); return false'>show all</a>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <p>
+            The <a href="Data.html">Data</a> module contains a number of classes
+            providing a standard way to resolve various data storage formats into a
+            &#8216;simple&#8217; data array.
+            </p>
+            <pre>type               format&#x000A;simple             [[mzs,...], [intensities...]]&#x000A;transposed         [[mz,intensity], [mz,intensity], ...]&#x000A;interleaved        [mz,intensity,mz,intensity,...]</pre>
+            <p>
+            For instance:
+            </p>
+            <pre>s = Data.new([[1,2,3], [4,5,6]], :simple)&#x000A;s.resolve.data        # =&gt; [[1,2,3], [4,5,6]]&#x000A;&#x000A;t = Data.new([[1,4],[2,5],[3,6]], :transposed)&#x000A;t.resolve.data        # =&gt; [[1,2,3], [4,5,6]]&#x000A;&#x000A;i = Data.new([1,4,2,5,3,6], :interleaved)&#x000A;i.resolve.data        # =&gt; [[1,2,3], [4,5,6]]</pre>
+            <p>
+            <a href="Data.html">Data</a> is always resolved by calling to_a on the
+            unresolved data object and then rearranging as needed (in the case of
+            simple data, to_a is also called on each member of the unresolved data
+            array). This lazy resolution allows the use of non-array unresolved_data
+            objects such as Data::LazyString:
+            </p>
+            <pre>str = [[1,4,2,5,3,6].pack(&quot;g*&quot;)].pack(&quot;m&quot;)&#x000A;unresolved_data = Data::LazyString.new(str)&#x000A;&#x000A;i = Data.new(unresolved_data, :interleaved)&#x000A;i.resolve.data        # =&gt; [[1,2,3], [4,5,6]]</pre>
+            <p>
+            Obviously the big advantage of lazy data resolution is that <a
+            href="Data.html">Data</a> objects may be instantiated cheaply while
+            expensive operations like unpacking and rearrangement may be put off or not
+            executed at all.
+            </p>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public instance</h3>
+            <ol>
+              <li><a href="#M000010">new</a></li>
+              <li><a href="#M000008">new_interleaved</a></li>
+              <li><a href="#M000009">new_simple</a></li>
+              <li><a href="#M000007">new_transposed</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='class-list'>
+              <h2>Classes and Modules</h2>
+              Class <a href="Data/Interleaved.html" class="link">Ms::Data::Interleaved</a><br />
+              Class <a href="Data/LazyIO.html" class="link">Ms::Data::LazyIO</a><br />
+              Class <a href="Data/LazyString.html" class="link">Ms::Data::LazyString</a><br />
+              Class <a href="Data/Simple.html" class="link">Ms::Data::Simple</a><br />
+              Class <a href="Data/Transposed.html" class="link">Ms::Data::Transposed</a><br />
+            </div>
+            <div id='methods'>
+              <h2>Public instance methods</h2>
+              <div class='method public-instance' id='method-M000010'>
+                <a name='M000010'></a>
+                <div class='synopsis'>
+                  <span class='name'>new</span>
+                  <span class='arguments'>(data, type=:simple)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Initializes a new data array of the specified type by forwarding data to
+                  the &#8220;new_<type>&#8221; method.
+                  </p>
+                  <pre>simple = Ms::Data.new([[1,2,3], [4,5,6]], :simple)&#x000A;simple.class           # =&gt; Ms::Data::Simple&#x000A;&#x000A;interleaved = Ms::Data.new([1,4,2,5,3,6], :interleaved)&#x000A;interleaved.class      # =&gt; Ms::Data::Interleaved</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000010-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000010-source'><span class="ruby-comment cmt"># File lib/ms/data.rb, line 54</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">type</span>=<span class="ruby-identifier">:simple</span>)&#x000A;      <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;new_#{type}&quot;</span>, <span class="ruby-identifier">data</span>)  &#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000008'>
+                <a name='M000008'></a>
+                <div class='synopsis'>
+                  <span class='name'>new_interleaved</span>
+                  <span class='arguments'>(unresolved_data, n=2)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Initializes a new interleaved data array.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000008-source'><span class="ruby-comment cmt"># File lib/ms/data/interleaved.rb, line 8</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_interleaved</span>(<span class="ruby-identifier">unresolved_data</span>, <span class="ruby-identifier">n</span>=<span class="ruby-value">2</span>)&#x000A;      <span class="ruby-constant">Interleaved</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">unresolved_data</span>, <span class="ruby-identifier">n</span>=<span class="ruby-value">2</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000009'>
+                <a name='M000009'></a>
+                <div class='synopsis'>
+                  <span class='name'>new_simple</span>
+                  <span class='arguments'>(unresolved_data)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Initializes a new simple data array.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000009-source'><span class="ruby-comment cmt"># File lib/ms/data/simple.rb, line 6</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_simple</span>(<span class="ruby-identifier">unresolved_data</span>)&#x000A;      <span class="ruby-constant">Simple</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">unresolved_data</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000007'>
+                <a name='M000007'></a>
+                <div class='synopsis'>
+                  <span class='name'>new_transposed</span>
+                  <span class='arguments'>(unresolved_data)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Initializes a new transposed data array.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000007-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000007-source'><span class="ruby-comment cmt"># File lib/ms/data/transposed.rb, line 8</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_transposed</span>(<span class="ruby-identifier">unresolved_data</span>)&#x000A;      <span class="ruby-constant">Transposed</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">unresolved_data</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

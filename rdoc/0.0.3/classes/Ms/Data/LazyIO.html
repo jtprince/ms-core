@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: Ms::Data::LazyIO [RDoc Documentation]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Class</span>
+          Ms::Data::LazyIO
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../../../files/lib/ms/data/lazy_io_rb.html">lib/ms/data/lazy_io.rb</a>
+          </li>
+        </ol>
+        <div class='parent'>
+          Parent:
+          <strong>Object</strong>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <p>
+            <a href="LazyIO.html">LazyIO</a> represents data to be lazily read from an
+            IO. To read the data from the IO, either string or <a
+            href="LazyIO.html#M000015">to_a</a> may be called (<a
+            href="LazyIO.html#M000015">to_a</a> unpacks the string into an array using
+            the decode_format and unpack_format).
+            </p>
+            <p>
+            <a href="LazyIO.html">LazyIO</a> is a suitable unresolved_data source for
+            <a href="../Data.html">Ms::Data</a> formats.
+            </p>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000012">new</a></li>
+              <li><a href="#M000011">unpack_code</a></li>
+            </ol>
+            <h3>public instance</h3>
+            <ol>
+              <li><a href="#M000014">reset</a></li>
+              <li><a href="#M000013">string</a></li>
+              <li><a href="#M000015">to_a</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='constants-list'>
+              <h2>Constants</h2>
+              <div class='name-list'>
+                <table summary='Constants'>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>NETWORK_FLOAT</td>
+                    <td>=</td>
+                    <td class='context-item-value'>'g*'</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>NETWORK_DOUBLE</td>
+                    <td>=</td>
+                    <td class='context-item-value'>'G*'</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>LITTLE_ENDIAN_FLOAT</td>
+                    <td>=</td>
+                    <td class='context-item-value'>'e*'</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>LITTLE_ENDIAN_DOUBLE</td>
+                    <td>=</td>
+                    <td class='context-item-value'>'E*'</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>BASE_64</td>
+                    <td>=</td>
+                    <td class='context-item-value'>'m'</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='attribute-list'>
+              <h2 class='section-bar'>Attributes</h2>
+              <div class='name-list'>
+                <table>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>compressed</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'>
+                      
+                      boolean: whether the peaks string is zlib compressed
+                    </td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>decode_format</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'>
+                      
+                      Indicates a decoding format, may be false to unpack string without
+                      decoding.
+                    </td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>io</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'>
+                      
+                      The IO from which string is read
+                    </td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>num_bytes</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'>
+                      
+                      The number of bytes to be read from io when evaluating string
+                    </td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>start_index</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'>
+                      
+                      The start index for reading string
+                    </td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>unpack_format</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'>
+                      
+                      Indicates the unpacking format
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000012'>
+                <a name='M000012'></a>
+                <div class='synopsis'>
+                  <span class='name'>new</span>
+                  <span class='arguments'>(io, start_index=io.pos, num_bytes=nil, unpack_format=NETWORK_FLOAT, compressed=false, decode_format=BASE_64)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000012-source'><span class="ruby-comment cmt"># File lib/ms/data/lazy_io.rb, line 49</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">io</span>, <span class="ruby-identifier">start_index</span>=<span class="ruby-identifier">io</span>.<span class="ruby-identifier">pos</span>, <span class="ruby-identifier">num_bytes</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">unpack_format</span>=<span class="ruby-constant">NETWORK_FLOAT</span>, <span class="ruby-identifier">compressed</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">decode_format</span>=<span class="ruby-constant">BASE_64</span>)&#x000A;        <span class="ruby-ivar">@io</span> = <span class="ruby-identifier">io</span>&#x000A;        <span class="ruby-ivar">@start_index</span> = <span class="ruby-identifier">start_index</span>&#x000A;        <span class="ruby-ivar">@num_bytes</span> = <span class="ruby-identifier">num_bytes</span>&#x000A;        <span class="ruby-ivar">@unpack_format</span> = <span class="ruby-identifier">unpack_format</span>&#x000A;        <span class="ruby-ivar">@compressed</span> = <span class="ruby-identifier">compressed</span>&#x000A;        <span class="ruby-ivar">@decode_format</span> = <span class="ruby-identifier">decode_format</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000011'>
+                <a name='M000011'></a>
+                <div class='synopsis'>
+                  <span class='name'>unpack_code</span>
+                  <span class='arguments'>(precision, network_order)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns the unpacking code for the given precision (32 or 64-bit) and
+                  network order (true for big-endian).
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000011-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000011-source'><span class="ruby-comment cmt"># File lib/ms/data/lazy_io.rb, line 21</span>&#x000A;        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unpack_code</span>(<span class="ruby-identifier">precision</span>, <span class="ruby-identifier">network_order</span>)&#x000A;          <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">precision</span>&#x000A;          <span class="ruby-keyword kw">when</span> <span class="ruby-value">32</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">network_order</span> <span class="ruby-value">? </span><span class="ruby-constant">NETWORK_FLOAT</span> <span class="ruby-operator">:</span> <span class="ruby-constant">LITTLE_ENDIAN_FLOAT</span>&#x000A;          <span class="ruby-keyword kw">when</span> <span class="ruby-value">64</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">network_order</span> <span class="ruby-value">? </span><span class="ruby-constant">NETWORK_DOUBLE</span> <span class="ruby-operator">:</span> <span class="ruby-constant">LITTLE_ENDIAN_DOUBLE</span>&#x000A;          <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;unknown precision (should be 32 or 64): #{precision}&quot;</span>&#x000A;          <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <h2>Public instance methods</h2>
+              <div class='method public-instance' id='method-M000014'>
+                <a name='M000014'></a>
+                <div class='synopsis'>
+                  <span class='name'>reset</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Resets the cached array (returned by <a
+                  href="LazyIO.html#M000015">to_a</a>) so that the array will be re-read from
+                  io.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000014-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000014-source'><span class="ruby-comment cmt"># File lib/ms/data/lazy_io.rb, line 67</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset</span>&#x000A;        <span class="ruby-ivar">@array</span> = <span class="ruby-keyword kw">nil</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000013'>
+                <a name='M000013'></a>
+                <div class='synopsis'>
+                  <span class='name'>string</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Positions io at start_index and reads a string of num_bytes length. The
+                  string is newly read from io each time string is called.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000013-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000013-source'><span class="ruby-comment cmt"># File lib/ms/data/lazy_io.rb, line 60</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">string</span>&#x000A;        <span class="ruby-identifier">io</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-identifier">start_index</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">pos</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">start_index</span>&#x000A;        <span class="ruby-identifier">io</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">num_bytes</span>)&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000015'>
+                <a name='M000015'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_a</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Reads string and unpacks using decode_format and unpack_code. The array is
+                  cached internally; to re-read the array, use reset.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000015-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000015-source'><span class="ruby-comment cmt"># File lib/ms/data/lazy_io.rb, line 73</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>&#x000A;        <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@array</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@array</span>&#x000A;        <span class="ruby-identifier">decoded</span> = <span class="ruby-identifier">decode_format</span> <span class="ruby-value">? </span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-identifier">decode_format</span>)[<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">string</span>&#x000A;        <span class="ruby-identifier">uncompressed</span> = <span class="ruby-ivar">@compressed</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflate</span>.<span class="ruby-identifier">inflate</span>(<span class="ruby-identifier">decoded</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">decoded</span>&#x000A;        <span class="ruby-identifier">uncompressed</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-identifier">unpack_format</span>)&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

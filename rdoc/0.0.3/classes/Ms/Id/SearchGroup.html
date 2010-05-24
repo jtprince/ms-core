@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: Ms::Id::SearchGroup [RDoc Documentation]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Module</span>
+          Ms::Id::SearchGroup
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../../../files/lib/ms/id/search_rb.html">lib/ms/id/search.rb</a>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000040">new</a></li>
+            </ol>
+            <h3>public instance</h3>
+            <ol>
+              <li><a href="#M000035">extension</a></li>
+              <li><a href="#M000038">from_file</a></li>
+              <li><a href="#M000039">from_filenames</a></li>
+              <li><a href="#M000036">search_class</a></li>
+              <li><a href="#M000037">to_paths</a></li>
+            </ol>
+          </div>
+          <div id='context'>
+            <div id='includes'>
+              <h2>Included modules</h2>
+              <ol>
+                <li><a href="Search.html">Search</a></li>
+              </ol>
+            </div>
+          </div>
+          <div id='section'>
+            <div id='attribute-list'>
+              <h2 class='section-bar'>Attributes</h2>
+              <div class='name-list'>
+                <table>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>searches</td>
+                    <td class='context-item-value'>[RW]</td>
+                    <td class='context-item-desc'>
+                      
+                      an array of search objects
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000040'>
+                <a name='M000040'></a>
+                <div class='synopsis'>
+                  <span class='name'>new</span>
+                  <span class='arguments'>(arg=nil, opts={}) {|self| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  takes an array of filenames or a single search filename (with extension
+                  defined by &#8216;extendsion&#8217;) or an array of objects passes any
+                  arguments to the initializer for each search the optional block yields the
+                  object for further processing
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000040-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000040-source'><span class="ruby-comment cmt"># File lib/ms/id/search.rb, line 88</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">arg</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">opts</span>={})&#x000A;        <span class="ruby-ivar">@peps</span> = []&#x000A;        <span class="ruby-ivar">@reference_hash</span> = {}&#x000A;        <span class="ruby-ivar">@searches</span> = []&#x000A;&#x000A;        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arg</span>&#x000A;          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/\.#{Regexp.escap(extension)}$/</span>&#x000A;            <span class="ruby-identifier">from_file</span>(<span class="ruby-identifier">arg</span>)&#x000A;          <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)&#x000A;            <span class="ruby-identifier">from_filenames</span>(<span class="ruby-identifier">arg</span>)&#x000A;          <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)&#x000A;            <span class="ruby-ivar">@searches</span> = <span class="ruby-identifier">array</span>&#x000A;          <span class="ruby-keyword kw">else</span>&#x000A;            <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;must be file, array of filenames, or array of objs&quot;</span>&#x000A;          <span class="ruby-keyword kw">end</span>&#x000A;          <span class="ruby-ivar">@searches</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">search_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">opts</span>)&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <h2>Public instance methods</h2>
+              <div class='method public-instance' id='method-M000035'>
+                <a name='M000035'></a>
+                <div class='synopsis'>
+                  <span class='name'>extension</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  the group&#8217;s file extension (with no leading period)
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000035-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000035-source'><span class="ruby-comment cmt"># File lib/ms/id/search.rb, line 54</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension</span>&#x000A;        <span class="ruby-value str">'grp'</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000038'>
+                <a name='M000038'></a>
+                <div class='synopsis'>
+                  <span class='name'>from_file</span>
+                  <span class='arguments'>(file)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000038-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000038-source'><span class="ruby-comment cmt"># File lib/ms/id/search.rb, line 67</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_file</span>(<span class="ruby-identifier">file</span>)&#x000A;        <span class="ruby-identifier">from_filenames</span>(<span class="ruby-identifier">to_paths</span>(<span class="ruby-identifier">file</span>))&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000039'>
+                <a name='M000039'></a>
+                <div class='synopsis'>
+                  <span class='name'>from_filenames</span>
+                  <span class='arguments'>(filenames)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000039-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000039-source'><span class="ruby-comment cmt"># File lib/ms/id/search.rb, line 72</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_filenames</span>(<span class="ruby-identifier">filenames</span>)&#x000A;        <span class="ruby-identifier">filenames</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>&#x000A;          <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span> <span class="ruby-identifier">file</span>&#x000A;            <span class="ruby-identifier">message</span> = <span class="ruby-node">&quot;File: #{file} does not exist!\n&quot;</span>&#x000A;            <span class="ruby-identifier">message</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;perhaps you need to modify the file with file paths&quot;</span>&#x000A;            <span class="ruby-identifier">abort</span> <span class="ruby-identifier">message</span>&#x000A;          <span class="ruby-keyword kw">end</span>&#x000A;          <span class="ruby-ivar">@searches</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">search_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>)&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000036'>
+                <a name='M000036'></a>
+                <div class='synopsis'>
+                  <span class='name'>search_class</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000036-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000036-source'><span class="ruby-comment cmt"># File lib/ms/id/search.rb, line 58</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_class</span>&#x000A;        <span class="ruby-constant">Search</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000037'>
+                <a name='M000037'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_paths</span>
+                  <span class='arguments'>(file)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  a simple formatted file with paths to the search files
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000037-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000037-source'><span class="ruby-comment cmt"># File lib/ms/id/search.rb, line 63</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_paths</span>(<span class="ruby-identifier">file</span>)&#x000A;        <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-identifier">file</span>).<span class="ruby-identifier">grep</span>(<span class="ruby-regexp re">/\w/</span>).<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^#/</span>}.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">chomp</span> }&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

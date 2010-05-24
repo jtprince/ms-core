@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: Ms::Support::BinarySearch [RDoc Documentation]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Module</span>
+          Ms::Support::BinarySearch
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../../../files/lib/ms/support/binary_search_rb.html">lib/ms/support/binary_search.rb</a>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <p>
+            A binary search library adapted from: <a
+            href="http://0xcc.net/ruby-bsearch">0xcc.net/ruby-bsearch</a>/
+            </p>
+            <hr size="1"></hr><p>
+            Ruby/Bsearch - a binary search library for Ruby.
+            </p>
+            <p>
+            Copyright (C) 2001 Satoru Takabayashi <satoru@namazu.org>
+            </p>
+            <pre>All rights reserved.&#x000A;This is free software with ABSOLUTELY NO WARRANTY.</pre>
+            <p>
+            You can redistribute it and/or modify it under the terms of the
+            Ruby&#8217;s licence.
+            </p>
+            <p>
+            Example:
+            </p>
+            <pre>% irb -r ./bsearch.rb&#x000A;&gt;&gt; %w(a b c c c d e f).bsearch_first {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; 2&#x000A;&gt;&gt; %w(a b c c c d e f).bsearch_last {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; 4&#x000A;&gt;&gt; %w(a b c e f).bsearch_first {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; 2&#x000A;&gt;&gt; %w(a b e f).bsearch_first {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; nil&#x000A;&gt;&gt; %w(a b e f).bsearch_last {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; nil&#x000A;&gt;&gt; %w(a b e f).bsearch_lower_boundary {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; 2&#x000A;&gt;&gt; %w(a b e f).bsearch_upper_boundary {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; 2&#x000A;&gt;&gt; %w(a b c c c d e f).bsearch_range {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; 2...5&#x000A;&gt;&gt; %w(a b c d e f).bsearch_range {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; 2...3&#x000A;&gt;&gt; %w(a b d e f).bsearch_range {|x| x &lt;=&gt; &quot;c&quot;}&#x000A;=&gt; 2...2</pre>
+            <p>
+            The binary search algorithm is extracted from Jon Bentley&#8217;s
+            Programming Pearls 2nd ed. p.93
+            </p>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public instance</h3>
+            <ol>
+              <li><a href="#M000042">search_first</a></li>
+              <li><a href="#M000044">search_last</a></li>
+              <li><a href="#M000041">search_lower_boundary</a></li>
+              <li><a href="#M000045">search_range</a></li>
+              <li><a href="#M000043">search_upper_boundary</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='constants-list'>
+              <h2>Constants</h2>
+              <div class='name-list'>
+                <table summary='Constants'>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>VERSION</td>
+                    <td>=</td>
+                    <td class='context-item-value'>'1.5'</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='methods'>
+              <h2>Public instance methods</h2>
+              <div class='method public-instance' id='method-M000042'>
+                <a name='M000042'></a>
+                <div class='synopsis'>
+                  <span class='name'>search_first</span>
+                  <span class='arguments'>(array, range=nil) {|array[boundary]| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  This method searches the FIRST occurrence which satisfies a condition given
+                  by a block in binary fashion and return the index of the first occurrence.
+                  Return nil if not found.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000042-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000042-source'><span class="ruby-comment cmt"># File lib/ms/support/binary_search.rb, line 72</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_first</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;        <span class="ruby-identifier">boundary</span> = <span class="ruby-identifier">search_lower_boundary</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">boundary</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">array</span>[<span class="ruby-identifier">boundary</span>]) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>&#x000A;          <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>&#x000A;        <span class="ruby-keyword kw">else</span> &#x000A;          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">boundary</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000044'>
+                <a name='M000044'></a>
+                <div class='synopsis'>
+                  <span class='name'>search_last</span>
+                  <span class='arguments'>(array, range=nil) {|array[boundary]| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  This method searches the LAST occurrence which satisfies a condition given
+                  by a block in binary fashion and return the index of the last occurrence.
+                  Return nil if not found.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000044-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000044-source'><span class="ruby-comment cmt"># File lib/ms/support/binary_search.rb, line 105</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_last</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;        <span class="ruby-comment cmt"># `- 1' for canceling `lower + 1' in bsearch_upper_boundary.</span>&#x000A;        <span class="ruby-identifier">boundary</span> = <span class="ruby-identifier">search_upper_boundary</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-operator">-</span> <span class="ruby-value">1</span>&#x000A;&#x000A;        <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">boundary</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">array</span>[<span class="ruby-identifier">boundary</span>]) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>)&#x000A;          <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>&#x000A;        <span class="ruby-keyword kw">else</span>&#x000A;          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">boundary</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000041'>
+                <a name='M000041'></a>
+                <div class='synopsis'>
+                  <span class='name'>search_lower_boundary</span>
+                  <span class='arguments'>(array, range=nil) {|array[mid]| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Return the lower boundary. (inside)
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000041-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000041-source'><span class="ruby-comment cmt"># File lib/ms/support/binary_search.rb, line 51</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_lower_boundary</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;        <span class="ruby-identifier">range</span> = <span class="ruby-value">0</span> <span class="ruby-operator">...</span> <span class="ruby-identifier">array</span>.<span class="ruby-identifier">length</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">range</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span>&#x000A;        &#x000A;        <span class="ruby-identifier">lower</span>  = <span class="ruby-identifier">range</span>.<span class="ruby-identifier">first</span>() <span class="ruby-operator">-</span><span class="ruby-value">1</span>&#x000A;        <span class="ruby-identifier">upper</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">exclude_end?</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">last</span> <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">upper</span>&#x000A;          <span class="ruby-identifier">mid</span> = ((<span class="ruby-identifier">lower</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">upper</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-comment cmt"># for working with mathn.rb (Rational)</span>&#x000A;          <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">array</span>[<span class="ruby-identifier">mid</span>]) <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>&#x000A;            <span class="ruby-identifier">lower</span> = <span class="ruby-identifier">mid</span>&#x000A;          <span class="ruby-keyword kw">else</span> &#x000A;            <span class="ruby-identifier">upper</span> = <span class="ruby-identifier">mid</span>&#x000A;          <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">upper</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000045'>
+                <a name='M000045'></a>
+                <div class='synopsis'>
+                  <span class='name'>search_range</span>
+                  <span class='arguments'>(array, range=nil, &amp;block)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Return the search result as a Range object.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000045-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000045-source'><span class="ruby-comment cmt"># File lib/ms/support/binary_search.rb, line 119</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_range</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;        <span class="ruby-identifier">lower</span> = <span class="ruby-identifier">search_lower_boundary</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;        <span class="ruby-identifier">upper</span> = <span class="ruby-identifier">search_upper_boundary</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">...</span> <span class="ruby-identifier">upper</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000043'>
+                <a name='M000043'></a>
+                <div class='synopsis'>
+                  <span class='name'>search_upper_boundary</span>
+                  <span class='arguments'>(array, range=nil) {|array[mid]| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Return the upper boundary. (outside)
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000043-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000043-source'><span class="ruby-comment cmt"># File lib/ms/support/binary_search.rb, line 84</span>&#x000A;      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_upper_boundary</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">range</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;        <span class="ruby-identifier">range</span> = <span class="ruby-value">0</span> <span class="ruby-operator">...</span> <span class="ruby-identifier">array</span>.<span class="ruby-identifier">length</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">range</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span>&#x000A;                &#x000A;        <span class="ruby-identifier">lower</span>  = <span class="ruby-identifier">range</span>.<span class="ruby-identifier">first</span>() <span class="ruby-operator">-</span><span class="ruby-value">1</span>&#x000A;        <span class="ruby-identifier">upper</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">exclude_end?</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">last</span> <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">upper</span>&#x000A;          <span class="ruby-identifier">mid</span> = ((<span class="ruby-identifier">lower</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">upper</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-comment cmt"># for working with mathn.rb (Rational)</span>&#x000A;          <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">array</span>[<span class="ruby-identifier">mid</span>]) <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>&#x000A;            <span class="ruby-identifier">lower</span> = <span class="ruby-identifier">mid</span>&#x000A;          <span class="ruby-keyword kw">else</span> &#x000A;            <span class="ruby-identifier">upper</span> = <span class="ruby-identifier">mid</span>&#x000A;          <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">lower</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-comment cmt"># outside of the matching range.</span>&#x000A;      <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

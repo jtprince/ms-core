@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>File: Rakefile [RDoc Documentation]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='file' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>Rakefile</h1>
+        <div class='paths'>
+          Rakefile
+        </div>
+        <div class='last-update'>
+          Last Update:
+          <span class='datetime'>2010-05-24 15:31:58 -0600</span>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <p>
+            require &#8216;rubygems&#8217; require &#8216;rake&#8217; require
+            &#8216;jeweler&#8217; require &#8216;rcov/rcovtask&#8217; require
+            &#8216;rake/rdoctask&#8217; require &#8216;rake/testtask&#8216;
+            </p>
+            <p>
+            Jeweler::Tasks.new do |gem|
+            </p>
+            <pre> gem.name = &quot;ms-core&quot;&#x000A; gem.summary = &quot;basic, shared functionality for mspire libraries&quot;&#x000A; gem.description = &quot;basic, shared functionality for mspire libraries&quot;&#x000A;gem.email = &quot;jtprince@gmail.com&quot;&#x000A; gem.homepage = &quot;http://github.com/jtprince/ms-core&quot;&#x000A; gem.authors = [&quot;Simon Chiang&quot;, &quot;John Prince&quot;]&#x000A; # dependencies:&#x000A; gem.add_dependency(&quot;molecules&quot;, &quot;&gt;= 0.2.0&quot;)&#x000A;&#x000A; # dev dependencies:&#x000A; gem.add_development_dependency &quot;spec-more&quot;, &quot;&gt;= 0&quot;</pre>
+            <p>
+            end
+            </p>
+            <p>
+            Rake::TestTask.new(:spec) do |spec|
+            </p>
+            <pre>spec.libs &lt;&lt; 'lib' &lt;&lt; 'spec'&#x000A;spec.pattern = 'spec/**/*_spec.rb'&#x000A;spec.verbose = true</pre>
+            <p>
+            end
+            </p>
+            <p>
+            Rcov::RcovTask.new do |spec|
+            </p>
+            <pre>spec.libs &lt;&lt; 'spec'&#x000A;spec.pattern = 'spec/**/*_spec.rb'&#x000A;spec.verbose = true</pre>
+            <p>
+            end
+            </p>
+            <p>
+            task :default => :spec
+            </p>
+            <p>
+            Rake::RDocTask.new do |rdoc|
+            </p>
+            <pre>version = File.exist?('VERSION') ? File.read('VERSION') : &quot;&quot;&#x000A;&#x000A;rdoc.rdoc_dir = 'rdoc'&#x000A;rdoc.title = &quot;ms-core #{version}&quot;&#x000A;rdoc.rdoc_files.include('README*')&#x000A;rdoc.rdoc_files.include('lib/**/*.rb')</pre>
+            <p>
+            end
+            </p>
+          </div>
+          <div id='section'>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>
