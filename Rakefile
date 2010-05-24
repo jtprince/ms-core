@@ -10,7 +10,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = "basic, shared functionality for mspire libraries"
   gem.description = "basic, shared functionality for mspire libraries"
  gem.email = "jtprince@gmail.com"
-  gem.homepage = "http://github.com/jtprince/ms-core"
+  gem.homepage = "http://github.com/jtprince/ms-core/rdoc"
   gem.authors = ["Simon Chiang", "John Prince"]
   # dependencies:
   gem.add_dependency("molecules", ">= 0.2.0")
