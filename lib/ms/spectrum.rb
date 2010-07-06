@@ -5,12 +5,11 @@ module Ms
     # The underlying data store.
     attr_reader :data
     
-    # Associated headers
-    attr_reader :headers
-    
-    def initialize(data, headers={})
+    # data takes an array: [mzs, intensities]
+    # @return [Ms::Spectrum]
+    # @param [Array] data two element array of mzs and intensities
+    def initialize(data)
       @data = data
-      @headers = headers
     end
 
     def self.from_peaks(ar_of_doublets)
