@@ -36,6 +36,7 @@ module Ms
       [@data[0], @data[1]]
     end
 
+    # retrieve an m/z and intensity doublet at that index
     def [](array_index)
       [mzs[array_index], intensities[array_index]]
     end

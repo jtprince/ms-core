@@ -1,6 +1,6 @@
 
 # Controlled vocabulary
-class CV
+class CvParam
   attr_accessor :cv_ref, :accession, :name, :value
 
   def initialize(cv_ref, accession, name, value=nil)
