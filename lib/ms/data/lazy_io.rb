@@ -73,8 +73,12 @@ module Ms
       def to_a
         return @array if @array
         decoded = decode_format ?  string.unpack(decode_format)[0] : string
-        uncompressed = @compressed ? Zlib::Inflate.inflate(decoded) : decoded
-        uncompressed.unpack(unpack_format)
+        if string.size == 0
+          []
+        else
+          uncompressed = @compressed ? Zlib::Inflate.inflate(decoded) : decoded
+          uncompressed.unpack(unpack_format)
+        end
       end
     end
   end
