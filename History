@@ -1,3 +1,8 @@
+== version 0.0.6
+
+* added cv_param (CvParam) object
+* added spectrum documentation
+
 == version 0.0.3
 
 * switched specs to spec/more
