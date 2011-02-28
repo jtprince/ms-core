@@ -96,10 +96,12 @@ module Ms
       # amino_acids keys as symbols, average masses
       AVG_SYM = Hash[AVG_STRING.map {|aa,mass| [aa.to_sym, mass] } ]
 
-      # amino_acids keys as symbols and also strings, monoisotopic masses
-      MONO = MONO_SYM.merge(MONO_STRING)
-      # amino_acids keys as symbols and also strings, average masses
-      AVG = AVG_SYM.merge(AVG_STRING)
+      # Monoisotopic amino acid masses keyed as symbols and also strings (all
+      # upper case).  Also includes Ms::Mass::MONO for things like protons ('h+')
+      MONO = MONO_SYM.merge(MONO_STRING).merge(Ms::Mass::MONO)
+      # Average amino acid masses keyed as symbols and also strings (all
+      # uppder case).  Also includes Ms::Mass::AVG for things like protons ('h+')
+      AVG = AVG_SYM.merge(AVG_STRING).merge(Ms::Mass::AVG)
 
       ###########################################################################
       # This section is broken in 1.9 (ruby-units fault), so we generate the
