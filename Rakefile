@@ -19,6 +19,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{basic, shared functionality for mspire libraries}
   gem.email = "jtprince@gmail.com"
   gem.authors = ["John T. Prince", "Simon Chiang"]
+  gem.rubyforge_project = 'mspire'
   # Dependencies in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
