@@ -3,7 +3,7 @@ require 'ms/mass'
 module Ms
   module Mass
 
-   
+
     # A module for working with commonly used residue masses in proteomics.
     #
     #     require 'ms/mass/aa'
@@ -80,26 +80,26 @@ module Ms
         "W"=>186.0793129535,
         "X"=>118.805716,
         "Y"=>163.0633285383,
-        "Z"=>128.550585}
-        }
+        "Z"=>128.550585
+      }
 
-        # amino_acids keys as symbols, monoisotopic masses
-        MONO_SYM = Hash[MONO_STRING.map {|aa,mass| [aa.to_sym, mass] } ]
+      # amino_acids keys as symbols, monoisotopic masses
+      MONO_SYM = Hash[MONO_STRING.map {|aa,mass| [aa.to_sym, mass] } ]
 
-        # amino_acids keys as symbols, average masses
-        AVG_SYM = Hash[AVG_STRING.map {|aa,mass| [aa.to_sym, mass] } ]
+      # amino_acids keys as symbols, average masses
+      AVG_SYM = Hash[AVG_STRING.map {|aa,mass| [aa.to_sym, mass] } ]
 
-        # Monoisotopic amino acid masses keyed as symbols and also strings (all
-        # upper case).  Also includes Ms::Mass::MONO for things like protons ('h+')
-        MONO = MONO_SYM.merge(MONO_STRING).merge(Ms::Mass::MONO)
-        # Average amino acid masses keyed as symbols and also strings (all
-        # uppder case).  Also includes Ms::Mass::AVG for things like protons ('h+')
-        AVG = AVG_SYM.merge(AVG_STRING).merge(Ms::Mass::AVG)
+      # Monoisotopic amino acid masses keyed as symbols and also strings (all
+      # upper case).  Also includes Ms::Mass::MONO for things like protons ('h+')
+      MONO = MONO_SYM.merge(MONO_STRING).merge(Ms::Mass::MONO)
+      # Average amino acid masses keyed as symbols and also strings (all
+      # uppder case).  Also includes Ms::Mass::AVG for things like protons ('h+')
+      AVG = AVG_SYM.merge(AVG_STRING).merge(Ms::Mass::AVG)
 
-        ###########################################################################
-        # This section is broken in 1.9 (ruby-units fault), so we generate the
-        # data and include it.
-        ###########################################################################
+      ###########################################################################
+      # This section is broken in 1.9 (ruby-units fault), so we generate the
+      # data and include it.
+      ###########################################################################
 
 =begin
       # These are included here to offer maximum functionality
@@ -165,9 +165,9 @@ module Ms
 
 =end
 
-        ###########################################################################
-        # End fudge
-        ###########################################################################
+      ###########################################################################
+      # End fudge
+      ###########################################################################
 
     end
   end
