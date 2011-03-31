@@ -1,12 +1,4 @@
 require 'rubygems'
-require 'bundler'
-begin
-  Bundler.setup(:default, :development)
-rescue Bundler::BundlerError => e
-  $stderr.puts e.message
-  $stderr.puts "Run `bundle install` to install missing gems"
-  exit e.status_code
-end
 require 'rake'
 
 require 'jeweler'
@@ -16,11 +8,13 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/jtprince/ms-core"
   gem.license = "MIT"
   gem.summary = %Q{basic, shared functionality for mspire libraries}
-  gem.description = %Q{basic, shared functionality for mspire libraries}
+  gem.description = %Q{basic, shared functionality for mspire libraries.}
   gem.email = "jtprince@gmail.com"
   gem.authors = ["John T. Prince", "Simon Chiang"]
   gem.rubyforge_project = 'mspire'
-  # Dependencies in Gemfile
+  gem.add_runtime_dependency 'bio', '>= 1.4.1'
+  gem.add_development_dependency "spec-more", ">= 0"
+  gem.add_development_dependency "jeweler", "~> 1.5.2"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
@@ -31,12 +25,12 @@ Rake::TestTask.new(:spec) do |spec|
   spec.verbose = true
 end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |spec|
-  spec.libs << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.verbose = true
-end
+#require 'rcov/rcovtask'
+#Rcov::RcovTask.new do |spec|
+#  spec.libs << 'spec'
+#  spec.pattern = 'spec/**/*_spec.rb'
+#  spec.verbose = true
+#end
 
 task :default => :spec
 
